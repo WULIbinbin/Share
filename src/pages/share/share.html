@@ -1,0 +1,13 @@
+<ion-content class="card-background-page">
+	<ion-card *ngFor="let item of Data">
+		<img [src]="item.attributes.image.attributes.url" *ngIf="item.attributes.image"/>
+		<ion-card-content>
+			<ion-card-title>
+				{{item.attributes.title}}
+			</ion-card-title>
+			<p>
+				{{item.attributes.context}}			
+			</p>
+		</ion-card-content>
+	</ion-card>
+</ion-content>
