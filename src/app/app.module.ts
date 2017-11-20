@@ -17,6 +17,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { getPicService } from '../providers/getPicService';
 import { BackButtonService } from '../providers/goBackBtn';
 import { imgload } from '../providers/imgload';
+import { imgLoading } from '../providers/imgLoading';
+import { imgCut } from '../providers/picShow';
 //新组件要放declarations和entryComponents，新组件的import命名和他的ts的classname一致
 @NgModule({
 	declarations: [
@@ -29,7 +31,9 @@ import { imgload } from '../providers/imgload';
 		follows,
 		write,
 		login,
-		userInfo
+		userInfo,
+		imgLoading,
+		imgCut
 	],
 	imports: [
 		BrowserModule,
@@ -60,7 +64,9 @@ import { imgload } from '../providers/imgload';
 		},
 		getPicService,
 		BackButtonService,
-		imgload
+		imgload,
+		imgLoading,
+		imgCut		
 	]
 })
 export class AppModule {}

@@ -5,6 +5,7 @@ import { write } from '../write/write';
 import { login } from '../login/login';
 import { userInfo } from '../userInfo/userInfo';
 import { imgload } from '../../providers/imgload';
+import { imgLoading } from '../../providers/imgLoading';
 
 @Component({
   selector: 'home',
@@ -15,12 +16,14 @@ export class home {
   forces:any[] = [];
   forceThen:String = '关注';
   HOME:String = 'HOT';
+  basePath:string;
   constructor(private imghome:imgload, public navCtrl: NavController, public cd: ChangeDetectorRef) {    
+    this.basePath = imghome.imgUrl();
     const nUser = new av.Query('uArtive');
     const that = this;
-    const loginTime = JSON.parse(localStorage.getItem('user')).time;
+    const loginTime = localStorage.getItem('user')?JSON.parse(localStorage.getItem('user')).time:'0';
     const nTime = new Date().getTime();
-    if(loginTime<nTime){
+    if(loginTime<nTime||!loginTime||!localStorage.getItem('user')){
       setTimeout(()=>{        
         that.navCtrl.push(login,{
           item1:''
@@ -37,16 +40,6 @@ export class home {
   gotoUserInfo(uid){
     this.navCtrl.push(userInfo,{
       uid:uid
-    });
-  }
-  toForce(id){
-    const _this = this;
-    av.User.current().follow(id).then(function(res){
-       if(res){
-          _this.forceThen = '已关注';         
-       }
-    }, function(err){
-      console.dir(err);
     });
   }
   gotocreate(){

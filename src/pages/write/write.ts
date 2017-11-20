@@ -121,8 +121,8 @@ import { imgload } from '../../providers/imgload';
     }
     getPicture(type,event) {//1拍照,0从图库选择
         let options = {
-          targetWidth: 800,
-         targetHeight: 800
+          //targetWidth: 3000,
+          //targetHeight: 3000
         };
         if (type == 1) {
           this.GetPicService.getPictureByCamera(options).then(imageBase64 => {
@@ -138,25 +138,5 @@ import { imgload } from '../../providers/imgload';
           });
         }
         this.cdw.detectChanges();
-      }
-
-      // private getPictureSuccess(imageBase64) {
-      //   this.isChange = true;
-      //   this.imageBase64 = <string>imageBase64;
-      //   this.avatarPath = 'data:image/jpeg;base64,' + imageBase64;
-      // }
-
-      // saveAvatar() {
-      //   if (this.isChange) {
-      //     console.log(this.imageBase64);//这是头像数据.
-      //     this.GetPicService.showLoading('正在上传....');
-      //     this.viewCtrl.dismiss({avatarPath: this.avatarPath});//这里可以把头像传出去.
-      //   } else {
-      //     this.dismiss();
-      //   }
-      // }
-
-      // dismiss() {
-      //   this.viewCtrl.dismiss();
-      // }
+      }   
   }

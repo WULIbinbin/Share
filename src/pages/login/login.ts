@@ -103,10 +103,11 @@ const addUser = new User();
 						}else{							
 							if(that.fromUser){
 								that.navHome.setRoot(user);
+								that.sf.detectChanges();
 							}else{
 								that.navHome.setRoot(home);
-							}
-							that.sf.detectChanges();
+								that.sf.detectChanges();
+							}							
 						}					
 					},300)
 				}

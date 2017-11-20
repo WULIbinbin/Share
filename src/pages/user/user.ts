@@ -34,6 +34,7 @@ export class user {
 		  _this.changeDetectorRef.detectChanges(); 
 		});
 		const fans = av.User.current().followerQuery();
+		console.log(fans)
 		fans.include('follower');
 		fans.find().then(function(res){
 		  //粉丝列表
@@ -126,8 +127,8 @@ export class user {
 	  }
 	  getPicture(type) {//1拍照,0从图库选择
 		  let options = {
-			targetWidth: 400,
-		   targetHeight: 400
+			 targetWidth: 3000,
+		   targetHeight: 3000
 		  };
 		  if (type == 1) {
 			this.GetPicUser.getPictureByCamera(options).then(imageBase64 => {

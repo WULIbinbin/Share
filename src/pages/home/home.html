@@ -1,48 +1,17 @@
-<ion-header page-home>
-    <ion-segment [(ngModel)]="HOME">
-        <ion-segment-button value="HOT">
-          热门
-          <p class="border_nav_shot"></p>
-        </ion-segment-button>
-        <ion-segment-button value="FORCE">
-          关注
-          <p class="border_nav_shot"></p>
-        </ion-segment-button>
-    </ion-segment>
-</ion-header>
-<ion-content padding page-home> 
-    
-    <!-- <ion-slides pager>
-      
-        <ion-slide>
-          <ion-item *ngFor="let item of forces">
-            <div class="userText">
-              <div class="userIcon" (click)="gotoUserInfo(item.attributes.uId)">
-                <img [src]="item.attributes.uImg" *ngIf="item.attributes.uImg">
-              </div>
-              <h2>{{item.attributes.uname}}</h2>
-              <p>{{item.attributes.artInfo}}</p>
-            </div>
-            <div class="userImg">
-              <div class="imglist" *ngFor="let img of item.attributes.artImg, let i = index;" [ngStyle]="{width:item.attributes.artImg.length==1?'70%':'48%'}">
-                <img [src]="img" [ngStyle]="{width:item.attributes.artImg.length==1?'90%':'94%'}"/>
-              </div>
-            </div>
-            <br/>
-            <span padding>{{item.createdAt}}</span>  
-          </ion-item>
-        </ion-slide>
-      
-        <ion-slide>
-          <h2>Slide 2</h2>
-        </ion-slide>
-      
-        <ion-slide>
-          <h2>Slide 3</h2>
-        </ion-slide>
-      
-      </ion-slides>  -->    
-  <div [ngSwitch]="HOME" page-home>
+
+<ion-content page-home>
+  <ion-segment [(ngModel)]="HOME" fix-top>
+      <ion-segment-button value="HOT">
+        热门
+        <p class="border_nav_shot"></p>
+      </ion-segment-button>
+      <ion-segment-button value="FORCE">
+        关注
+        <p class="border_nav_shot"></p>
+      </ion-segment-button>
+  </ion-segment>
+       
+  <div [ngSwitch]="HOME" padding margin-top>
     <ion-list *ngSwitchCase="'HOT'">      
       <ion-item *ngFor="let item of forces">
         <div class="userText">
@@ -53,9 +22,10 @@
           <p>{{item.attributes.artInfo}}</p>
         </div>
         <div class="userImg">
-          <div class="imglist" *ngFor="let img of item.attributes.artImg, let i = index;" [ngStyle]="{width:item.attributes.artImg.length==1?'70%':'48%'}">
-            <img [src]="img" [ngStyle]="{width:item.attributes.artImg.length==1?'90%':'94%'}"/>
+          <div class="imglist" *ngFor="let img of item.attributes.artImg, let i = index;" [ngStyle]="">
+            <img [src]="basePath+'img/loading.gif'" [lazyImg]="img" [ngStyle]="{width:item.attributes.artImg.length==1?'90%':'94%'}"/>
           </div>
+          <!-- {width:item.attributes.artImg.length==1?'70%':'48%'} -->
         </div>
         <br/>
         <span padding>{{item.createdAt}}</span>  
